@@ -1,27 +1,6 @@
 extends layout
 
 block content
-  #header
-    .inner
-        #notify
-          img(src='images/headicons.jpg', alt='savings icons')
-          span
-            strong Achieve the highest
-            | frequent flier status possible.
-            em.blue Say hello to travel rewards!
-          #account_manage
-            a(href='login.php') Login In
-            | |
-            a(href='register.php') Register Now
-        .clear
-        #logo
-          a(href='/')
-            img(src='images/logo.png', alt='Volare')
-        #navbar
-          a.navbtn(href='/') Search Flights
-          a.navbtn(href='/register.php') Register
-          a.navbtn(href='/aboutus.php') About Us
-          a.navbtn(href='/contactus.php') Contact Us
   .inner
     h1#headline
       | Start
@@ -71,16 +50,3 @@ block content
             option 2
             option 3
           a.big_btn(href='#') Find Me a Flight
-  #footer
-    .inner
-      span.copy
-        | © 2013 Volare Inc.
-        em |
-        a(href='#') Privacy
-        em |
-        a(href='#') Terms of Use
-    script
-      $( function(){
-      $('.page_modal, #search_flights').hide();
-      $('.page_modal, #search_flights').fadeIn(1200);
-      });

@@ -1,10 +1,48 @@
 doctype 5
 html
+  
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/reset.css')
     script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js?ver=3.3.1')
     link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600', rel='stylesheet', type='text/css')
+  
   body
+    #header
+      .inner
+          #notify
+            img(src='/images/headicons.jpg', alt='savings icons')
+            span
+              strong Achieve the highest
+              | frequent flier status possible.
+              em.blue Say hello to travel rewards!
+            #account_manage
+              a(href='/login') Log In
+              | |
+              a(href='/register') Register Now
+          .clear
+          #logo
+            a(href='/')
+              img(src='/images/logo.png', alt='Volare')
+          #navbar
+            a.navbtn(href='/') Search Flights
+            a.navbtn(href='/register') Register
+            a.navbtn(href='/about') About Us
+            a.navbtn(href='/contact') Contact Us
+
     block content
+
+    #footer
+      .inner
+        span.copy
+          | © 2013 Volare Inc.
+          em |
+          a(href='#') Privacy
+          em |
+          a(href='#') Terms of Use
+      script
+        $( function(){
+          $('.page_modal, #search_flights').hide();
+          $('.page_modal, #search_flights').fadeIn(1200);
+        });

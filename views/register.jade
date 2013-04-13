@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  .page_modal
+      h2.sub_title Start Saving Big.
+      .modal_pad
+        h1 Sign In to Savings
+        h3 Enter your username and password below:
+        .page_content.full_width
+          .loginbox.registerbox
+            h6
+              | Already a Member?
+              a(href='/login.php') Click here
+              | to sign in.
+            form
+              input.firstname_register(placeholder='First Name', type='text')
+              input.lastname_register(placeholder='Last Name', type='text')
+              input.username_register(placeholder='Username', type='text')
+              input.password_register(placeholder='Password', type='password')
+              input.cpassword_register(placeholder='Confirm Password', type='password')
+              select
+                option Frequent Flyer Program
+                option United Mileage Plus
+                option Delta SkyMiles
+                option American AAdvantage
+              input.flierid_register(placeholder='Flier ID..', type='text')
+              input(type='submit', value='Register Now')
+
+        .clear
