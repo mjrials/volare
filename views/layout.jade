@@ -5,31 +5,31 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/reset.css')
-    script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js?ver=3.3.1')
     link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600', rel='stylesheet', type='text/css')
-  
+    script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js?ver=3.3.1')
+
   body
     #header
       .inner
-          #notify
-            img(src='/images/headicons.jpg', alt='savings icons')
-            span
-              strong Achieve the highest
-              | frequent flier status possible.
-              em.blue Say hello to travel rewards!
-            #account_manage
-              a(href='/login') Log In
-              | |
-              a(href='/register') Register Now
-          .clear
-          #logo
-            a(href='/')
-              img(src='/images/logo.png', alt='Volare')
-          #navbar
-            a.navbtn(href='/') Search Flights
-            a.navbtn(href='/register') Register
-            a.navbtn(href='/about') About Us
-            a.navbtn(href='/contact') Contact Us
+        #notify
+          img(src='/images/headicons.jpg', alt='savings icons')
+          span
+            strong Achieve the highest
+            | frequent flier status possible.
+            em.blue Say hello to travel rewards!
+          #account_manage
+            a(href='/login') Log In
+            | |
+            a(href='/register') Register Now
+        .clear
+        #logo
+          a(href='/')
+            img(src='/images/logo.png', alt='Volare')
+        #navbar
+          a.navbtn(href='/') Search Flights
+          a.navbtn(href='/register') Register
+          a.navbtn(href='/about') About Us
+          a.navbtn(href='/contact') Contact Us
 
     .inner
       h1#headline
@@ -39,7 +39,7 @@ html
         span rewards
         | mileage possible while booking tickets for future travels.
 
-        block content
+      block content
 
     #footer
       .inner

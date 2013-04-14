@@ -28,24 +28,16 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/about', function(req, res){
-  res.render('about', {
-    title: 'Volare'
-  });
+  res.render('about', { title: 'Volare' });
 });
 app.get('/contact', function(req, res){
-  res.render('contact', {
-    title: 'Volare'
-  });
+  res.render('contact', { title: 'Volare' });
 });
 app.get('/register', function(req, res){
-  res.render('register', {
-    title: 'Volare'
-  });
+  res.render('register', { title: 'Volare' });
 });
 app.get('/login', function(req, res){
-  res.render('login', {
-    title: 'Volare'
-  });
+  res.render('login', { title: 'Volare' });
 });
 app.get('/', routes.index);
 app.get('/users', user.list);
