@@ -1,45 +1,47 @@
 extends layout
 
 block content
-  #search_flights
-    h2.sub_title Start Here.
-    form(action='#', method='post')
-      .triptype
-        a.tripoption.first(href='#') Round Trip
-        a.tripoption.middle(href='#') One-way
-        a.tripoption.last(href='#') Connecting
-      select.class_select
-        option Select Cabin/Class
-        option Coach
-        option Business
-        option First Class
-      .clear
-      .depart_from
-        input.departfrom(placeholder='From Ex. LAX', type='text')
-        input.airport(type='checkbox')
-        p.nb Nearby Airports
-      .arrive_to
-        input.arriveto(placeholder='To Ex. New York, New York', type='text')
-        input.airport(type='checkbox')
-        p.nb Nearby Airports
-      .depart_date
-        input.departdate(placeholder='Depart Date', type='text')
-      .arrive_date
-        input.arrivedate(placeholder='Arrive Date', type='text')
-      .bottom_console
-        select.adults_select
-          option Adults
-          option 1
-          option 2
-          option 3
-        select.children_select
-          option Children
-          option 1
-          option 2
-          option 3
-        select.seniors_select
-          option Seniors
-          option 1
-          option 2
-          option 3
-        a.big_btn(href='#', onclick="javascript:handleSearch(event)") Find Me a Flight
+  center
+    h1(color:white) MATTIE LOVES NATTIE
+  //- #search_flights
+  //-   h2.sub_title Start Here.
+  //-   form(action='#', method='post')
+  //-     .triptype
+  //-       a.tripoption.first(href='#') Round Trip
+  //-       a.tripoption.middle(href='#') One-way
+  //-       a.tripoption.last(href='#') Connecting
+  //-     select.class_select
+  //-       option Select Cabin/Class
+  //-       option Coach
+  //-       option Business
+  //-       option First Class
+  //-     .clear
+  //-     .depart_from
+  //-       input.departfrom(placeholder='From Ex. LAX', type='text')
+  //-       input.airport(type='checkbox')
+  //-       p.nb Nearby Airports
+  //-     .arrive_to
+  //-       input.arriveto(placeholder='To Ex. New York, New York', type='text')
+  //-       input.airport(type='checkbox')
+  //-       p.nb Nearby Airports
+  //-     .depart_date
+  //-       input.departdate(placeholder='Depart Date', type='text')
+  //-     .arrive_date
+  //-       input.arrivedate(placeholder='Arrive Date', type='text')
+  //-     .bottom_console
+  //-       select.adults_select
+  //-         option Adults
+  //-         option 1
+  //-         option 2
+  //-         option 3
+  //-       select.children_select
+  //-         option Children
+  //-         option 1
+  //-         option 2
+  //-         option 3
+  //-       select.seniors_select
+  //-         option Seniors
+  //-         option 1
+  //-         option 2
+  //-         option 3
+  //-       a.big_btn(href='#', onclick="javascript:handleSearch(event)") Find Me a Flight

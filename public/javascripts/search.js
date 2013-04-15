@@ -25,7 +25,7 @@ function generateTable()
 
     var html = [];
     html.push('<h2 class="sub_title">Search Results</h2>')
-    html.push('<table width="100%" border="0" cellspacing="0" cellpadding="3" class="table"><thead><tr><th>Flight Info</th><th>Route</th><th>Flight Times</th><th>Price</th><th>Cost</th><th>R. Miles</th><th>Q. Miles</th></tr></thead><tbody>');
+    html.push('<table width="100%" border="0" cellspacing="0" cellpadding="3" class="table table-striped table-hover"><thead><tr><th>Flight Info</th><th>Route</th><th>Flight Times</th><th>Price</th><th>Cost</th><th>R. Miles</th><th>Q. Miles</th></tr></thead><tbody>');
 
     for (var i = 0; i < 10; ++i) {
         // var item     = items[i];
