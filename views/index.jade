@@ -5,9 +5,13 @@ block content
     h2.sub_title Start Here.
     form(action='#', method='post')
       .triptype
-        a.tripoption.first(href='#') Round Trip
-        a.tripoption.middle(href='#') One-way
-        a.tripoption.last(href='#') Connecting
+        ul.nav.nav-pills
+          li#roundtrip.active
+              a.blank_link(onclick="javascript:roundTrip()") Round Trip
+          li#oneway
+            a.blank_link(onclick="javascript:oneWay()") One-way
+          //- li#connecting
+          //-   a.blank_link(href='#') Connecting
       select.class_select
         option Select Cabin/Class
         option Coach

@@ -37,7 +37,7 @@ function generateTable()
 }
 
 function generateToken() {
-    $.getJSON('/javascripts/getToken' , function(data) {
+    $.getJSON('/javascripts/getToken.js' , function(data) {
       // $('.result').html(data);
       alert('Load was performed.');
     });

@@ -163,10 +163,15 @@ h2.sub_title{
 	border-radius: 7px;
 	display: block; 
 	float: left;
-	background: #fefefe url(../images/triptypebg.png);
+	/*background: #fefefe url(../images/triptypebg.png);*/
 	margin: 20px;
 }
 
+.triptype ul{
+	curser: pointer;
+}
+
+/*
 .triptype a{
 	line-height: 40px;
 	padding: 0 13px;
@@ -174,16 +179,14 @@ h2.sub_title{
 	float: left; 
 	text-decoration: none;
 	font-weight: 600;
-}
+}*/
 
 .nb{float: left; margin-left: 8px; font-size: 16px; color: #777;}
 
 input[type="checkbox"]{float: left}
-
-.triptype .first{color: #267fc8}
-.triptype .middle{position: relative; left: 5px;}
-.triptype .last{position: relative; left: 5px;}
-
+/*
+.triptype .selected{color: #267fc8}
+.triptype {position: relative; left: 5px;}*/
 
 .class_select{
 	width: 246px;
