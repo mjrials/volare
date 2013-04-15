@@ -36,8 +36,8 @@ html
         #navbar
           a.navbtn(href='/') Search Flights
           a.navbtn(href='/register') Register
-          a.navbtn(href='/about') About Us
-          a.navbtn(href='/contact') Contact Us
+          a.navbtn(href='/about') About
+          a.navbtn(href='/contact') Contact
 
     .inner
       h1#headline
@@ -59,6 +59,6 @@ html
           a(href='#') Terms of Use
       script
         $( function(){
-          $('.page_modal, #search_flights').hide();
-          $('.page_modal, #search_flights').fadeIn(1200);
+          $('#search_flights').hide();
+          $('#search_flights').fadeIn(1200);
         });
