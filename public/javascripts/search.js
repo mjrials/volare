@@ -29,7 +29,6 @@ function generateTable()
 
     for (var i = 0; i < 10; ++i) {
         // var item     = items[i];
-    
         html.push('<tr><td>UA1010</td><td>SFO-ORD</td><td>6:32A-12:43P</td><td>$310</td><td>$194</td><td>2307.5</td><td>1846</td></tr>');
     }
     html.push('</tbody></table>');
@@ -37,20 +36,15 @@ function generateTable()
     $("#search_flights").html(html.join(""));
 }
 
+function generateToken() {
+    $.getJSON('/javascripts/getToken' , function(data) {
+      // $('.result').html(data);
+      alert('Load was performed.');
+    });
+}
 function getResults() {
-    // $.getScript("http://svcs.ebay.com/services/search/FindingService/v1" +
-    //  "?SECURITY-APPNAME=eBit79154-2413-47fb-b56d-e842fd2c524" +
-    //  "&OPERATION-NAME=findItemsByKeywords" +
-    //  "&SERVICE-VERSION=1.0.0" +
-    //  "&RESPONSE-DATA-FORMAT=JSON" +
-    //  "&callback=_cb_findItemsByKeywords" +
-    //  "&REST-PAYLOAD" +
-    //  "&keywords=" + searchString +
-    //  "&paginationInput.entriesPerPage=10" +
-    //  "&paginationInput.pageNumber=" + page +
-    //  "&itemFilter(0).name=ListingType" +
-    //  "&itemFilter(0).value=FixedPrice"
-    //  , animationFunction()); 
+    // 7d620441561d5a9cf876294ce472866d
+    var token = generateToken();
     generateTable();
 }
 
@@ -70,7 +64,8 @@ function handleSearch(event)
 
     // verify well-formed input
 
-    $("#search_flights").fadeOut("normal");     //fade out input
-    getResults();                               //get the results, change #search_fligths
+    $("#search_flights").fadeOut("normal", function() {
+        getResults();                               //get the results, change #search_fligths
+    });     //fade out input
     $("#search_flights").fadeIn("normal");      //fade in results
 }

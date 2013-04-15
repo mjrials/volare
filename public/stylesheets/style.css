@@ -54,8 +54,7 @@ em.blue{margin-left: 5px; color: #1571be; font-weight: bold}
 	box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
 	border-radius: 4px;
 	position: relative; 
-	transition: top .5s;
-	
+	transition: top .1s;
 }
 
 #navbar .navbtn:hover{top: -2px;}
@@ -113,12 +112,12 @@ em.blue{margin-left: 5px; color: #1571be; font-weight: bold}
 	float: left;
 	background: #fefefe;
 	box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
-	border: 0px;
 	line-height: 45px;
 	margin: 30px 0px 0 40px;
 	font-size: 22px;
 	padding: 10px;
-	color: #999
+	color: #999;
+	border-color: #ececec;
 }
 
 h2.sub_title{
@@ -193,11 +192,11 @@ input[type="checkbox"]{float: left}
 	float: left;
 	background: #fefefe;
 	box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
-	border: 0px;
 	line-height: 45px;
 	margin: 20px 0;
 	font-size: 22px;
 	color: #999;
+	border-color: #ececec;
 }
 
 
@@ -445,6 +444,7 @@ h6 a{color: #217dc7; text-decoration: none;}
 	border: 1px solid #ddd; 
 	float: left; 
 	margin-left: 38px;
+	border-color: #ececec;
 }
 
 .flierid_register{

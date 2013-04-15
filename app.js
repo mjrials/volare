@@ -39,6 +39,7 @@ app.get('/register', function(req, res){
 app.get('/login', function(req, res){
   res.render('login', { title: 'Volare' });
 });
+
 app.get('/', routes.index);
 app.get('/users', user.list);
 
