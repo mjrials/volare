@@ -7,7 +7,7 @@ block content
       .triptype
         ul.nav.nav-pills
           li#roundtrip.active
-              a.blank_link(onclick="javascript:roundTrip()") Round Trip
+            a.blank_link(onclick="javascript:roundTrip()") Round Trip
           li#oneway
             a.blank_link(onclick="javascript:oneWay()") One-way
           //- li#connecting
@@ -46,4 +46,4 @@ block content
           option 1
           option 2
           option 3
-        a.big_btn(href='#', onclick="javascript:handleSearch(event)") Find Me a Flight
+        a.big_btn(onclick="javascript:handleSearch(event)") Find Me a Flight

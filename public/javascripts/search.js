@@ -37,7 +37,7 @@ function generateTable()
 }
 
 function generateToken() {
-    $.getJSON('/javascripts/getToken.js' , function(data) {
+    $.getJSON('http://api.master18.tiket.com/apiv1/payexpress?method=getToken&secretkey=7d620441561d5a9cf876294ce472866d' , function(data) {
       // $('.result').html(data);
       alert('Load was performed.');
     });
