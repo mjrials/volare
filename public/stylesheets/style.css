@@ -234,7 +234,6 @@ input[type="checkbox"]{float: left}
 	margin-right: 30px;
 	margin-top: 18px;
 }
-
 	
 .departfrom, .arriveto, .departdate, .arrivedate{
 	width: 402px;
@@ -492,4 +491,7 @@ h6 a{color: #217dc7; text-decoration: none;}
 .blank_link {
 	text-decoration: none;
 	color: black;
+}
+a.big_btn:hover {
+	cursor:pointer;
 }
