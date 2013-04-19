@@ -1,21 +1,24 @@
-var http = require("http");
+// var http = require('http');
+// var url = 'http://api.master18.tiket.com/apiv1/payexpress?method=getToken&secretkey=7d620441561d5a9cf876294ce472866d&output=json';
 
-var options = {
-    host: 'http://api.master18.tiket.com/apiv1/payexpress?method=getToken&secretkey=7d620441561d5a9cf876294ce472866d',
-    port: 80,
-    path: '/',
-    method: 'GET'
-};
+// var req = http.get(url, function(res) {
+//     var body = '';
 
-http.get(options, function(res){
-    var data = '';
+//     res.on('data', function(chunk) {
+//         body += chunk;
+//     });
 
-    res.on('data', function (chunk){
-        data += chunk;
-    });
+//     res.on('end', function() {
+//          res.writeHead(200, { 'Content-Type': 'application/json' });
+//          res.write(body);
+//          res.end();
 
-    res.on('end',function(){
-        var obj = JSON.parse(data);
-        alert(obj);
-    })
-});
+//         // var response = JSON.parse(body)
+//         // var jsonToken = '{\n"token":"' + response.token + '"\n}';
+        
+//     });
+// });
+
+// // req.writeHead(200, { 'Content-Type': 'application/json' });
+// // req.write(body);
+// // req.end();

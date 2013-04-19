@@ -37,10 +37,42 @@ function generateTable()
 }
 
 function generateToken() {
-    $.getJSON('http://api.master18.tiket.com/apiv1/payexpress?method=getToken&secretkey=7d620441561d5a9cf876294ce472866d' , function(data) {
-      // $('.result').html(data);
-      alert('Load was performed.');
-    });
+    // $.getJSON('javascripts/getToken.js' , function(data) {
+    //   // $('.result').html(data);
+    //   alert('Load was performed.');
+    // });
+
+    // $.ajax({
+    //     url: '/javascripts/getToken.js', //the URL to your node.js server that has data
+    //     dataType: 'json',
+    //     success: function(json_data){
+    //         alert(json_data);
+    //     },
+    //     error: function(xhr, error){
+    //         alert(error);
+    //     }
+    // });
+    $.ajax( {
+          url: '/token',
+          type: 'POST',
+          success: function(items) {
+                alert(JSON.parse(items).token);
+          }
+       });
+
+    // $.getJSON('/javascripts/getToken.js', function(data) {
+    //   // var items = [];
+     
+    //   // $.each(data, function(key, val) {
+    //   //   items.push('<li id="' + key + '">' + val + '</li>');
+    //   // });
+     
+    //   // $('<ul/>', {
+    //   //   'class': 'my-new-list',
+    //   //   html: items.join('')
+    //   // }).appendTo('body');
+    //     alert("SHIT");
+    // });
 }
 function getResults() {
     // 7d620441561d5a9cf876294ce472866d

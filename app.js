@@ -7,7 +7,9 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , request = require('request');
+
 
 var app = express();
 
@@ -39,6 +41,19 @@ app.get('/register', function(req, res){
 app.get('/login', function(req, res){
   res.render('login', { title: 'Volare' });
 });
+
+// -----------------------------------------------
+
+app.post('/token', function(req, res){
+  var url = 'http://api.master18.tiket.com/apiv1/payexpress?method=getToken&secretkey=7d620441561d5a9cf876294ce472866d&output=json';
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.send(body); 
+    }
+  });
+});
+
+// -----------------------------------------------
 
 app.get('/', routes.index);
 app.get('/users', user.list);

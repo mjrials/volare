@@ -54,7 +54,7 @@ table td[class*="span"],table th[class*="span"],.row-fluid table td[class*="span
 .table-hover tbody tr.info:hover>td{background-color:#c4e3f3;}
 .nav{margin-left:0;margin-bottom:20px;list-style:none;}
 .nav>li>a{display:block;}
-.nav>li>a:hover,.nav>li>a:focus{text-decoration:none;background-color:#eeeeee;}
+.nav>li>a:hover,.nav>li>a:focus{text-decoration:none;background-color:#eeeeee;curser:pointer;}
 .nav>li>a>img{max-width:none;}
 .nav>.pull-right{float:right;}
 .nav-header{display:block;padding:3px 15px;font-size:11px;font-weight:bold;line-height:20px;color:#999999;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);text-transform:uppercase;}
