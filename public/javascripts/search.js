@@ -37,46 +37,39 @@ function generateTable()
 }
 
 function generateToken() {
-    // $.getJSON('javascripts/getToken.js' , function(data) {
-    //   // $('.result').html(data);
-    //   alert('Load was performed.');
-    // });
-
-    // $.ajax({
-    //     url: '/javascripts/getToken.js', //the URL to your node.js server that has data
-    //     dataType: 'json',
-    //     success: function(json_data){
-    //         alert(json_data);
-    //     },
-    //     error: function(xhr, error){
-    //         alert(error);
-    //     }
-    // });
+    var token;
     $.ajax( {
-          url: '/token',
-          type: 'POST',
-          success: function(items) {
-                alert(JSON.parse(items).token);
-          }
-       });
-
-    // $.getJSON('/javascripts/getToken.js', function(data) {
-    //   // var items = [];
-     
-    //   // $.each(data, function(key, val) {
-    //   //   items.push('<li id="' + key + '">' + val + '</li>');
-    //   // });
-     
-    //   // $('<ul/>', {
-    //   //   'class': 'my-new-list',
-    //   //   html: items.join('')
-    //   // }).appendTo('body');
-    //     alert("SHIT");
-    // });
+      url: '/token',
+      type: 'POST',
+      success: function(items) {
+        token = JSON.parse(items).token;
+        // return JSON.parse(items).token;
+      }
+    });
 }
+
 function getResults() {
-    // 7d620441561d5a9cf876294ce472866d
-    var token = generateToken();
+    // 7d620441561d5a9cf876294ce472866d -- api secret key
+    
+    var token;
+    $.ajax( {
+      url: '/token',
+      type: 'POST',
+      success: function(items) {
+        token = JSON.parse(items).token;
+        
+        $.ajax( {
+            url: '/search',
+            type: 'POST',
+            data: token,
+            success: function(items) {
+                alert(items);
+            }
+        })
+        // return JSON.parse(items).token;
+      }
+    });
+
     generateTable();
 }
 
