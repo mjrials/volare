@@ -1,7 +1,5 @@
-function getNumTickets(adults, children, seniors) {
-    alert( adults.replace( /^\D+/g, '') + 
-            children.replace( /^\D+/g, '') +
-            seniors.replace( /^\D+/g, '') );
+function getNumTickets(string) {
+    return string.replace( /^\D+/g, '');
 }
 
 function generateTable()
@@ -90,11 +88,11 @@ function handleSearch(event)
     var depart = $('.depart_date').val();
     var arrive = $('.arrive_date').val();
 
-    var adults = $('.adults_select').val();       
+    var adults = getNumTickets($('.adults_select').val());     
+    alert(adults);  
     var seniors = $('.seniors_select').val();
     var children = $('.children_select').val();
-    // var tickets = adultTickets + seniorTickets + childrenTickets; //get numbers from ticket vals
-    alert(getNumTickets(adults, seniors, children));
+
     // verify well-formed input
 
     $("#search_flights").fadeOut("normal", function() {  //fade out input
