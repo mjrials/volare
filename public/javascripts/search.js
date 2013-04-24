@@ -49,26 +49,27 @@ function generateToken() {
 }
 
 function getResults() {
-    // 7d620441561d5a9cf876294ce472866d -- api secret key
+    //  48a5cb3a2dc46b8aab6f                    --  wego api key
+    // fd6a7feda4c23483893ce20b64800ae46922afa2 --  sample instance ID
     
-    var token;
-    $.ajax( {
-      url: '/token',
-      type: 'POST',
-      success: function(items) {
-        token = JSON.parse(items).token;
+    // var token;
+    // $.ajax( {
+    //   url: '/token',
+    //   type: 'POST',
+    //   success: function(items) {
+    //     token = JSON.parse(items).token;
         
-        $.ajax( {
-            url: '/search',
-            type: 'POST',
-            data: token,
-            success: function(items) {
-                alert(items);
-            }
-        })
-        // return JSON.parse(items).token;
-      }
-    });
+    //     $.ajax( {
+    //         url: '/search',
+    //         type: 'POST',
+    //         data: token,
+    //         success: function(items) {
+    //             alert(items);
+    //         }
+    //     })
+    //     // return JSON.parse(items).token;
+    //   }
+    // });
 
     generateTable();
 }
@@ -78,19 +79,20 @@ function handleSearch(event)
     //scrape parameters
     var tripClass = $('.class_select').val();
     var tripType = $('.triptype').val();
-    var departFrom = $('.depart_from').val();
-    var arriveTo = $('.arrive_to').val();
+    var departFrom = $('.depart_from').val();           //make sure these are IATA codes
+    var arriveTo = $('.arrive_to').val();               //
     var departDate = $('.depart_date').val();
     var arrivateDate = $('.arrive_date').val();
 
-    var adultTickets = $('.adults_select').val();
+    var adultTickets = $('.adults_select').val();       //take number from value
     var seniorTickets = $('.seniors_select').val();
     var childrenTickets = $('.children_select').val();
+    var tickets = adultTickets + seniorTickets + childrenTickets;
 
     // verify well-formed input
 
-    $("#search_flights").fadeOut("normal", function() {
-        getResults();                               //get the results, change #search_fligths
-    });     //fade out input
+    $("#search_flights").fadeOut("normal", function() {  //fade out input
+        getResults();                                    //get the results, change #search_fligths
+    });    
     $("#search_flights").fadeIn("normal");      //fade in results
 }
