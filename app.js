@@ -41,6 +41,12 @@ app.get('/register', function(req, res){
 app.get('/login', function(req, res){
   res.render('login', { title: 'Volare' });
 });
+app.get('/privacy', function(req, res){
+  res.render('privacy', { title: 'Volare' });
+});
+app.get('/terms', function(req, res) {
+  res.render('terms', { title: 'Volare' });
+});
 
 // -----------------------------------------------------------------------------------------------
 
