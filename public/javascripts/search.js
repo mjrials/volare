@@ -1,3 +1,9 @@
+function getNumTickets(adults, children, seniors) {
+    alert( adults.replace( /^\D+/g, '') + 
+            children.replace( /^\D+/g, '') +
+            seniors.replace( /^\D+/g, '') );
+}
+
 function generateTable()
 {
     // var items = root.findItemsByKeywordsResponse[0].searchResult[0].item || [];
@@ -77,18 +83,18 @@ function getResults() {
 function handleSearch(event)
 {
     //scrape parameters
-    var tripClass = $('.class_select').val();
-    var tripType = $('.triptype').val();
-    var departFrom = $('.depart_from').val();           //make sure these are IATA codes
-    var arriveTo = $('.arrive_to').val();               //
-    var departDate = $('.depart_date').val();
-    var arrivateDate = $('.arrive_date').val();
+    var tClass = $('.class_select').val();
+    var type = $('.triptype').val();
+    var from = $('.depart_from').val();           //make sure these are IATA codes
+    var to = $('.arrive_to').val();               //
+    var depart = $('.depart_date').val();
+    var arrive = $('.arrive_date').val();
 
-    var adultTickets = $('.adults_select').val();       //take number from value
-    var seniorTickets = $('.seniors_select').val();
-    var childrenTickets = $('.children_select').val();
-    var tickets = adultTickets + seniorTickets + childrenTickets;
-
+    var adults = $('.adults_select').val();       
+    var seniors = $('.seniors_select').val();
+    var children = $('.children_select').val();
+    // var tickets = adultTickets + seniorTickets + childrenTickets; //get numbers from ticket vals
+    alert(getNumTickets(adults, seniors, children));
     // verify well-formed input
 
     $("#search_flights").fadeOut("normal", function() {  //fade out input
