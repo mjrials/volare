@@ -23,6 +23,8 @@ html
         $( ".datepicker" ).datepicker();
       });
 
+    script(src='/javascripts/typeahead.js')
+    script(src='/javascripts/typeahead.min.js')
     script
       $(function() {
         $.ajax({
@@ -35,6 +37,11 @@ html
             $( ".airportComplete" ).autocomplete({
               source: airports
             });
+            //- $( ".airportComplete" ).typeahead({
+            //-   name: 'airports',                                                          
+            //-   prefetch: '/airports.txt',                                         
+            //-   limit: 10   
+            //- });
           }
         });
       });

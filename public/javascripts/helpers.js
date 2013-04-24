@@ -27,3 +27,18 @@ function firstclass() {
 	$("#coach").removeClass("active");
 	$("#business").removeClass("active");
 }
+
+function airportAC() {
+	$.ajax({
+	  url: '/airports.txt',
+	  success: function(items) {
+	    var airports = new Array();
+	    $.each(JSON.parse(items), function() {
+	      airports.push(this.name);
+	    });
+	    $( ".airportComplete" ).autocomplete({
+	      source: 'http://airportcode.riobard.com/search?fmt=JSONP'
+	    });
+	  }
+	});
+}
