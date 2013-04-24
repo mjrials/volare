@@ -9,3 +9,21 @@ function roundTrip() {
 	$("#oneway").removeClass("active");
 	$(".arrive_date").fadeIn("normal");
 }
+
+function coach() {
+	$("#coach").addClass("active");
+	$("#firstclass").removeClass("active");
+	$("#business").removeClass("active");
+}
+
+function business() {
+	$("#business").addClass("active");
+	$("#firstclass").removeClass("active");
+	$("#coach").removeClass("active");
+}
+
+function firstclass() {
+	$("#firstclass").addClass("active");
+	$("#coach").removeClass("active");
+	$("#business").removeClass("active");
+}

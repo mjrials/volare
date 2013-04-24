@@ -107,7 +107,7 @@ em.blue{margin-left: 5px; color: #1571be; font-weight: bold}
 }
 
 .bottom_console select{
-	width: 126px;
+	width: 150px;
 	display: block; 
 	float: left;
 	background: #fefefe;
@@ -165,6 +165,7 @@ h2.sub_title{
 	float: left;
 	/*background: #fefefe url(../images/triptypebg.png);*/
 	margin: 20px;
+	margin-left: 160px;
 }
 
 /*
@@ -185,7 +186,7 @@ input[type="checkbox"]{float: left}
 .triptype {position: relative; left: 5px;}*/
 
 .class_select{
-	width: 246px;
+/*	width: 246px;
 	padding: 10px;	
 	display: block; 
 	float: left;
@@ -195,7 +196,16 @@ input[type="checkbox"]{float: left}
 	margin: 20px 0;
 	font-size: 22px;
 	color: #999;
-	border-color: #ececec;
+	border-color: #ececec;*/
+
+	width: 322px;
+	height: 44px;
+	border-radius: 7px;
+	display: block; 
+	float: right;
+	/*background: #fefefe url(../images/triptypebg.png);*/
+	margin: 20px;
+	margin-right: 90px;
 }
 
 

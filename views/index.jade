@@ -12,38 +12,46 @@ block content
             a.blank_link(onclick="javascript:oneWay()") One-way
           //- li#connecting
           //-   a.blank_link(href='#') Connecting
-      select.class_select
-        option Select Cabin/Class
-        option Coach
-        option Business
-        option First Class
+      //- select.class_select
+      //-   option Select Cabin/Class
+      //-   option Coach
+      //-   option Business
+      //-   option First Class
+      .class_select
+        ul.nav.nav-pills
+          li#coach.active
+            a.blank_link(onclick="javascript:coach()") Coach
+          li#business
+            a.blank_link(onclick="javascript:business()") Business
+          li#firstclass
+            a.blank_link(onclick="javascript:firstclass()") First Class
       .clear
       .depart_from
-        input.departfrom(placeholder='From Ex. LAX', type='text')
-        input.airport(type='checkbox')
-        p.nb Nearby Airports
+        input.departfrom.airportComplete(placeholder='From Ex. LAX', type='text')
+        //- input.airport(type='checkbox')
+        //- //- p.nb Nearby Airports
       .arrive_to
-        input.arriveto(placeholder='To Ex. New York, New York', type='text')
-        input.airport(type='checkbox')
-        p.nb Nearby Airports
+        input.arriveto.airportComplete(placeholder='To Ex. New York, New York', type='text')
+        //- input.airport(type='checkbox')
+        //- p.nb Nearby Airports
       .depart_date
         input.datepicker.departdate(placeholder='Depart Date', type='text')
       .arrive_date
         input.datepicker.arrivedate(placeholder='Arrive Date', type='text')
       .bottom_console
         select.adults_select
-          option Adults
-          option 1
-          option 2
-          option 3
+          //- option Adults
+          option 1 Adult
+          option 2 Adults
+          option 3 Adults
         select.children_select
-          option Children
-          option 1
-          option 2
-          option 3
+          option 0 Children
+          option 1 Child
+          option 2 Children
+          option 3 Children
         select.seniors_select
-          option Seniors
-          option 1
-          option 2
-          option 3
+          option 0 Seniors
+          option 1 Senior
+          option 2 Seniors
+          option 3 Seniors
         a.big_btn(onclick="javascript:handleSearch(event)") Find Me a Flight
