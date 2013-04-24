@@ -18,7 +18,7 @@ block content
       //-   option Business
       //-   option First Class
       .class_select
-        ul.nav.nav-pills
+        ul#class_select.nav.nav-pills
           li#coach.active
             a.blank_link(onclick="javascript:coach()") Economy
           li#business
@@ -50,9 +50,9 @@ block content
           option(value='1') 1 Child
           option(value='2') 2 Children
           option(value='3') 3 Children
-        select.seniors_select
-          option(value='0') 0 Seniors
-          option(value='1') 1 Senior
-          option(value='2') 2 Seniors
-          option(value='3') 3 Seniors
-        a.big_btn(onclick="javascript:handleSearch(event)") Find Me a Flight
+        //- select.seniors_select
+        //-   option(value='0') 0 Seniors
+        //-   option(value='1') 1 Senior
+        //-   option(value='2') 2 Seniors
+        //-   option(value='3') 3 Seniors
+        a.big_btn(onclick="javascript:startSearch(event)") Find Me a Flight

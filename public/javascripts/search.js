@@ -40,63 +40,66 @@ function generateTable()
     $("#search_flights").html(html.join(""));
 }
 
-function generateToken() {
-    var token;
-    $.ajax( {
-      url: '/token',
-      type: 'POST',
-      success: function(items) {
-        token = JSON.parse(items).token;
-        // return JSON.parse(items).token;
-      }
-    });
-}
-
 function getResults() {
     //  48a5cb3a2dc46b8aab6f                    --  wego api key
     // fd6a7feda4c23483893ce20b64800ae46922afa2 --  sample instance ID
-    
-    // var token;
-    // $.ajax( {
-    //   url: '/token',
-    //   type: 'POST',
-    //   success: function(items) {
-    //     token = JSON.parse(items).token;
-        
-    //     $.ajax( {
-    //         url: '/search',
-    //         type: 'POST',
-    //         data: token,
-    //         success: function(items) {
-    //             alert(items);
-    //         }
-    //     })
-    //     // return JSON.parse(items).token;
-    //   }
-    // });
 
     generateTable();
 }
 
-function handleSearch(event)
+displayResults = function(data){
+    console.log(data);
+    $("#search_flights").fadeOut("normal", function() { 
+        getResults(); });    
+    $("#search_flights").fadeIn("normal");
+}
+
+pull = function(data){
+    // $.each(data.items, function(idx,val) {
+    //    $("#results").append($('<div></div>').text(val.title));
+    // });
+
+    var pullURL = 'http://www.wego.com/api/flights/pull.html?' +
+                'format=json' +
+                '&apiKey=48a5cb3a2dc46b8aab6f' +
+                '&instanceId=' + data.request.instanceId + 
+                '&rand=1' +
+                '&callback=displayResults';
+    $.ajax({
+        url: pullURL,
+        dataType: 'jsonp'
+    });
+}
+
+function startSearch(event)
 {
     //scrape parameters
-    var tClass = $('.class_select').val();
-    var type = $('.triptype').val();
-    var from = $('.depart_from').val();           //make sure these are IATA codes
-    var to = $('.arrive_to').val();               //
+    var tClass = $('.class_select').val();          //must be Economy, Business, First
+    // var tClass = $('#class_select li.selected a').text();
+    var type = $('.triptype').val();                //must be oneWay || roundTrip
+    var from = $('.depart_from').val();             //make sure these are IATA codes
+    var to = $('.arrive_to').val();                 
     var depart = $('.depart_date').val();
-    var arrive = $('.arrive_date').val();
-
-    var adults = getNumTickets($('.adults_select').val());     
-    alert(adults);  
-    var seniors = $('.seniors_select').val();
+    var arrive = $('.arrive_date').val();           //dates must be yyyy-mm-dd
+    var adults = $('.adults_select').val();         //must be number
     var children = $('.children_select').val();
 
     // verify well-formed input
 
-    $("#search_flights").fadeOut("normal", function() {  //fade out input
-        getResults();                                    //get the results, change #search_fligths
-    });    
-    $("#search_flights").fadeIn("normal");      //fade in results
+    // startSearch with instanceId
+    var instanceURL = 'http://www.wego.com/api/flights/startSearch.html?' +
+                    'format=json' +
+                    '&fromLocation=SFO' +
+                    '&toLocation=ORD' +
+                    '&tripType=oneWay' +
+                    '&cabinClass=Economy' +
+                    '&outboundDate=2013-06-09' +
+                    '&numAdults='+ adults +
+                    '&numChildren='+ children + 
+                    '&callback=pull' + 
+                    '&apiKey=48a5cb3a2dc46b8aab6f'
+    $.ajax({
+        url: instanceURL,
+        dataType: 'jsonp'
+    });
 }
