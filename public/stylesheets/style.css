@@ -512,3 +512,12 @@ a.big_btn:hover {
 .ffprogram_select {
 	height: 60px;
 }
+
+.result_airline {
+	color: #1571be; 
+	font-weight: bold
+}
+
+.result_cost {
+	font-weight: bold
+}
