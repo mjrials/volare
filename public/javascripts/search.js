@@ -4,6 +4,18 @@ function getNumTickets(string) {
     return string.replace( /^\D+/g, '');
 }
 
+function tConvert (time) {
+  // Check correct time format and split into components
+  time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+  if (time.length > 1) { // If time format correct
+    time = time.slice (1);  // Remove full string match value
+    time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
+    time[0] = +time[0] % 12 || 12; // Adjust hours
+  }
+  return time.join (''); // return adjusted time or original string
+}
+
 displayResults = function(data){
     console.log(data);
     var userAirline = "United Airlines";
@@ -19,36 +31,29 @@ displayResults = function(data){
             var code            = flights[i].outboundInfo.flightNumbers.join(' / ');
             var tClass          = (flights[i].outboundInfo.flightClasses)[0].name;
             var route           = flights[i].outboundInfo.airports.join('-');
-            var times           = flights[i].outboundInfo.localArrivalTimeStr.substring(11, 16) + '-' +
-                                    flights[i].outboundInfo.localDepartureTimeStr.substring(11, 16);
+            var times           = tConvert(flights[i].outboundInfo.localArrivalTimeStr.substring(11, 16)) + '-' +
+                                    tConvert(flights[i].outboundInfo.localDepartureTimeStr.substring(11, 16));
             var elapsedTimeMins = flights[i].outboundInfo.durationInMin;
             var estMiles        = elapsedTimeMins * 8.546;          //EST 8.546 miles/min
-            var price           = flights[i].price.totalAmount;
+            var price           = Math.round(flights[i].price.totalAmount);
             var rMiles          = 0;
             var qMiles          = 0;
+            var rewardDeduction = 0;
             var cost            = price;
 
             if(airline == userAirline) {
-                if(tClass == 'Economy') {
-                    rMiles = estMiles;
-                }
-                if(tClass == 'Business') {
-                    rMiles = 1.25 * estMiles;
-                }
-                else { //First
-                    rMiles = 1.5 * estMiles;
-                }
+                var dollarsPerMile;
 
-                if(rMiles < 500) {
-                    rMiles = 500;
-                }
-                if(rMiles > 2000) {
-                    cost = Math.round((price - (rMiles * 0.007)) * 100)/100;
-                }
-                else {
-                    cost = Math.round((price - (rMiles * 0.014)) * 100)/100;
-                }
+                if(tClass == 'Economy')     { rMiles = estMiles; }
+                if(tClass == 'Business')    { rMiles = 1.25 * estMiles; }
+                else                        { rMiles = 1.5 * estMiles; }
 
+                if(rMiles < 500)            { rMiles = 500; }
+                if(rMiles > 2000)           { dollarsPerMile = 0.007; }
+                else                        { dollarsPerMile = 0.014; }
+
+                rewardDeduction = Math.round(rMiles * dollarsPerMile);
+                cost = price - rewardDeduction;
                 $(".result_cost").css("color", "green"); 
             }
                 
@@ -56,7 +61,7 @@ displayResults = function(data){
                     '</td><td>' + route + 
                     '</td><td>' + times +
                     '</td><td>$' + price +
-                    '</td><td>' + rMiles +
+                    '</td><td>' + '<div><p>' + rMiles + '</p><p> - $' + rewardDeduction + '</p></div>' +
                     '</td><td>' + qMiles +
                     '</td><td>' + '<div><p class="result_cost">$' + cost + '</p></div>' +
                     '</td></tr>');
