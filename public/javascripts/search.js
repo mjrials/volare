@@ -3,7 +3,6 @@
 //      get rid of layover time
 //      referrals to regular site
 //      register + login + Ff thing
-//      q miles
 //      green cost text
 //      switch to dnsimple -> link to heroku
 //      integrate designsuxx table css
@@ -12,7 +11,6 @@
 //      and highlight boxes in red
 //      roundTrip not just oneWay -- multipel flight times, layover, etc
 //      add pics for airlines?
-
 
 function getNumTickets(string) {
     return string.replace( /^\D+/g, '');
@@ -28,6 +26,10 @@ function tConvert (time) {
   return time.join ('');
 }
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function camelCase(input) { 
     return input.toLowerCase().replace(/ (.)/g, function(match, group1) {
         return group1.toUpperCase();
@@ -41,7 +43,7 @@ displayResults = function(data){
     $("#search_flights").fadeOut("normal", function() { 
         var html = [];
         html.push('<h2 class="sub_title">Top Results</h2>')
-        html.push('<table width="100%" border="0" cellspacing="0" cellpadding="3" class="table table-striped table-hover"><thead><tr><th>Flight Info</th><th>Route</th><th class="center">Flight Times</th><th>Price</th><th>R. Miles</th><th>Q. Miles</th><th>Net Cost</th></tr></thead><tbody>');
+        html.push('<table width="100%" border="0" cellspacing="0" cellpadding="3" class="table table-striped table-hover"><thead><tr><th>Flight Info</th><th>Route</th><th class="center">Flight Times</th><th>Price</th><th>Redeemable<br />Miles</th><th>Elite Qualifying<br />Miles</th><th>Net Cost</th></tr></thead><tbody>');
 
         var flights = data.response.itineraries;
         for (var i = 0; i < 10; i++) {
@@ -56,7 +58,7 @@ displayResults = function(data){
             var price           = Math.round(flights[i].price.totalAmount);
             var rMiles          = 0;
             var qMiles          = 0;
-            var rewardDeduction = 0;
+            var rewardDeduction = "";
             var cost            = price;
 
             if(airline == userAirline) {
@@ -69,24 +71,26 @@ displayResults = function(data){
                 if(rMiles < 500)            { rMiles = 500; }
                 if(rMiles > 2000)           { dollarsPerMile = 0.007; }
                 else                        { dollarsPerMile = 0.014; }
+                rMiles = numberWithCommas(rMiles);
+                qMiles = numberWithCommas(Math.round(rMiles * 0.5));
 
                 rewardDeduction = Math.round(rMiles * dollarsPerMile);
                 cost = price - rewardDeduction;
-                $(".result_cost").css("color", "green"); 
+                rewardDeduction = "- $" + rewardDeduction;
             }
                 
             html.push('<tr><td>' + '<div><p class="result_airline">' + airline + '</p><p>' + code + ' - ' + tClass + '</p></div>' + 
                     '</td><td>' + route + 
                     '</td><td>' + '<div><p class="center">' + times + '</p></div>' + 
                     '</td><td>$' + price +
-                    '</td><td>' + '<div><p>' + rMiles + '</p><p> - $' + rewardDeduction + '</p></div>' +
+                    '</td><td>' + '<div><p>' + rMiles + '</p></div>' +
                     '</td><td>' + qMiles +
-                    '</td><td>' + '<div><p class="result_cost">$' + cost + '</p></div>' +
+                    '</td><td>' + '<div><p>$' + cost + '</p><p class="deduction">' + rewardDeduction + '</p></div>' +
                     '</td></tr>');
         }
 
         html.push('</tbody></table>');               
-        $("#search_flights").css("height", "605px"); 
+        $("#search_flights").css("height", "630px"); 
         $("#search_flights").html(html.join(""));
     });    
     $("#search_flights").fadeIn("normal");
@@ -99,18 +103,19 @@ pull = function(data){
                 '&instanceId=' + data.request.instanceId + 
                 '&rand=1' +
                 '&callback=displayResults';
-    $.ajax({
-        url: pullURL,
-        dataType: 'jsonp'
-    });
+    var timeout = window.setTimeout(function() {
+        $.ajax({
+            url: pullURL,
+            dataType: 'jsonp'
+        });
+    }, 2000);
 }
 
 function startSearch(event)
 {
     //scrape parameters
-    // var tClass = $('.class_select').val();          //must be Economy, Business, First
     var tClass      = $('.class_select li.active a').text();
-    var type        = camelCase($('.triptype li.active a').text());                //must be oneWay || roundTrip
+    var type        = camelCase($('.triptype li.active a').text());   //must be oneWay || roundTrip
     var from        = $('.departfrom').val();             //make sure these are IATA codes
     var to          = $('.arriveto').val();                 
     var depart      = $('.departdate').val();

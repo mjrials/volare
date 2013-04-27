@@ -518,8 +518,9 @@ a.big_btn:hover {
 	font-weight: bold;
 }
 
-.result_cost {
+.deduction {
 	font-weight: bold;
+	color: green;
 }
 
 .center {
