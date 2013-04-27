@@ -90,7 +90,7 @@ displayResults = function(data){
         }
 
         html.push('</tbody></table>');               
-        $("#search_flights").css("height", "630px"); 
+        $("#search_flights").css("height", "625px"); 
         $("#search_flights").html(html.join(""));
     });    
     $("#search_flights").fadeIn("normal");
@@ -108,7 +108,7 @@ pull = function(data){
             url: pullURL,
             dataType: 'jsonp'
         });
-    }, 2000);
+    }, 3000);
 }
 
 function startSearch(event)
