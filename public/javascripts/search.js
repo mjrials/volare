@@ -3,12 +3,9 @@
 //      get rid of layover time
 //      referrals to regular site
 //      register + login + Ff thing
-//      green cost text
 //      switch to dnsimple -> link to heroku
 //      integrate designsuxx table css
 //      anonymous search (FF input box)
-//      verify well-formed input
-//      and highlight boxes in red
 //      roundTrip not just oneWay -- multipel flight times, layover, etc
 //      add pics for airlines?
 
@@ -37,7 +34,7 @@ function camelCase(input) {
 }
 
 displayResults = function(data){
-    console.log(data);
+    // console.log(data);
     var userAirline = "United Airlines";
 
     $("#search_flights").fadeOut("normal", function() { 
@@ -71,11 +68,14 @@ displayResults = function(data){
                 if(rMiles < 500)            { rMiles = 500; }
                 if(rMiles > 2000)           { dollarsPerMile = 0.007; }
                 else                        { dollarsPerMile = 0.014; }
-                rMiles = numberWithCommas(rMiles);
-                qMiles = numberWithCommas(Math.round(rMiles * 0.5));
+                rMiles = rMiles;
+                qMiles = Math.round(rMiles * 0.5);
 
                 rewardDeduction = Math.round(rMiles * dollarsPerMile);
                 cost = price - rewardDeduction;
+
+                rMiles = numberWithCommas(rMiles);
+                qMiles = numberWithCommas(qMiles);
                 rewardDeduction = "- $" + rewardDeduction;
             }
                 
@@ -97,6 +97,8 @@ displayResults = function(data){
 }
 
 pull = function(data){
+    // console.log(data);
+
     var pullURL = 'http://www.wego.com/api/flights/pull.html?' +
                 'format=json' +
                 '&apiKey=48a5cb3a2dc46b8aab6f' +
@@ -113,6 +115,8 @@ pull = function(data){
 
 function startSearch(event)
 {
+    var validParams = true;
+
     //scrape parameters
     var tClass      = $('.class_select li.active a').text();
     var type        = camelCase($('.triptype li.active a').text());   //must be oneWay || roundTrip
@@ -125,10 +129,23 @@ function startSearch(event)
 
     var arriveString = '';
     if(type == "roundTrip") {
+        if(arrive == "")                      { $('.arrivedate').addClass("syntax_error"); validParams=false; }
+        else                                  { $('.arrivedate').removeClass("syntax_error"); }
+        if(arrive < depart) {
+            $('.arrivedate').addClass("syntax_error");
+            $('.departdate').addClass("syntax_error");
+            validParams=false;
+        }
         arriveString = '&inboundDate=' + arrive;
     }
 
     // verify well-formed input
+    if(from == "" || from.length != 3)    { $('.departfrom').addClass("syntax_error"); validParams=false; }
+    else                                  { $('.departfrom').removeClass("syntax_error"); }
+    if(to == "" || to.length != 3)        { $('.arriveto').addClass("syntax_error"); validParams=false; }
+    else                                  { $('.arriveto').removeClass("syntax_error"); }
+    if(depart == "")                      { $('.departdate').addClass("syntax_error"); validParams=false; }
+    else                                  { $('.departdate').removeClass("syntax_error"); }  
 
     // startSearch with instanceId
     var instanceURL = 'http://www.wego.com/api/flights/startSearch.html?' +
@@ -143,8 +160,10 @@ function startSearch(event)
                     '&numChildren='     + children + 
                     '&callback=pull'    + 
                     '&apiKey=48a5cb3a2dc46b8aab6f'
-    $.ajax({
-        url: instanceURL,
-        dataType: 'jsonp'
-    });
+    if(validParams) {
+        $.ajax({
+            url: instanceURL,
+            dataType: 'jsonp'
+        });
+    }
 }

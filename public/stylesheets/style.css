@@ -531,6 +531,10 @@ a.big_btn:hover {
 	display:none;
 }
 
+.syntax_error {
+	border: 1px solid red;
+}
+
 td {
 	border-right: 1px solid #ccc;
 }
