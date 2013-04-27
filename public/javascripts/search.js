@@ -1,13 +1,14 @@
 //  48a5cb3a2dc46b8aab6f                    --  wego api key
-//Fix   pendingResults
+//Fix   pendingResults              *****
 //      get rid of layover time
 //      referrals to regular site
-//      register + login + Ff thing
+//      register + login + Ff thing     ***
 //      switch to dnsimple -> link to heroku
 //      integrate designsuxx table css
-//      anonymous search (FF input box)
-//      roundTrip not just oneWay -- multipel flight times, layover, etc
+//      anonymous search (FF input box) ***
+//      roundTrip not just oneWay -- multipel flight times, layover, etc ***
 //      add pics for airlines?
+//      sort search results
 
 function getNumTickets(string) {
     return string.replace( /^\D+/g, '');
@@ -35,7 +36,7 @@ function camelCase(input) {
 
 displayResults = function(data){
     // console.log(data);
-    var userAirline = "United Airlines";
+    // var userAirline = "United Airlines";
 
     $("#search_flights").fadeOut("normal", function() { 
         var html = [];
@@ -58,7 +59,7 @@ displayResults = function(data){
             var rewardDeduction = "";
             var cost            = price;
 
-            if(airline == userAirline) {
+            // if(airline == userAirline) {
                 var dollarsPerMile;
 
                 if(tClass == 'Economy')     { rMiles = estMiles; }
@@ -77,7 +78,7 @@ displayResults = function(data){
                 rMiles = numberWithCommas(rMiles);
                 qMiles = numberWithCommas(qMiles);
                 rewardDeduction = "- $" + rewardDeduction;
-            }
+            // }
                 
             html.push('<tr><td>' + '<div><p class="result_airline">' + airline + '</p><p>' + code + ' - ' + tClass + '</p></div>' + 
                     '</td><td>' + route + 
@@ -90,7 +91,7 @@ displayResults = function(data){
         }
 
         html.push('</tbody></table>');               
-        $("#search_flights").css("height", "625px"); 
+        $("#search_flights").css("height", "626px"); 
         $("#search_flights").html(html.join(""));
     });    
     $("#search_flights").fadeIn("normal");
@@ -116,15 +117,16 @@ pull = function(data){
 function startSearch(event)
 {
     var validParams = true;
-
     //scrape parameters
     var tClass      = $('.class_select li.active a').text();
-    var type        = camelCase($('.triptype li.active a').text());   //must be oneWay || roundTrip
+    var type        = camelCase($('.triptype li.active a').text()); 
     var from        = $('.departfrom').val();             //make sure these are IATA codes
-    var to          = $('.arriveto').val();                 
+        from        = from.substring(from.length - 4, from.length - 1);
+    var to          = $('.arriveto').val();
+        to          = to.substring(to.length - 4, to.length - 1);                
     var depart      = $('.departdate').val();
     var arrive      = $('.arrivedate').val();           //dates must be yyyy-mm-dd
-    var adults      = $('.adults_select').val();         //must be number
+    var adults      = $('.adults_select').val();        
     var children    = $('.children_select').val();
 
     var arriveString = '';

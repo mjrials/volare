@@ -10,11 +10,6 @@ block content
             a.blank_link(onclick="javascript:roundTrip()") Round Trip
           li#oneway
             a.blank_link(onclick="javascript:oneWay()") One Way
-      //- select.class_select
-      //-   option Select Cabin/Class
-      //-   option Coach
-      //-   option Business
-      //-   option First Class
       .class_select
         ul.nav.nav-pills
           li#coach.active
@@ -25,17 +20,17 @@ block content
             a.blank_link(onclick="javascript:firstclass()") First Class
       .clear
       .depart_from
-        input.departfrom.airportComplete(placeholder='From                                     (LAX)', type='text')
+        input.departfrom.airportComplete(placeholder='From', type='text')
         //- input.airport(type='checkbox')
         //- //- p.nb Nearby Airports
       .arrive_to
-        input.arriveto.airportComplete(placeholder='To                (New York, New York)', type='text')
+        input.arriveto.airportComplete(placeholder='To', type='text')
         //- input.airport(type='checkbox')
         //- p.nb Nearby Airports
       .depart_date
-        input.datepicker.departdate(placeholder='Depart Date             (yyyy-mm-dd)', type='text')
+        input.datepicker.departdate(placeholder='Depart Date', type='text')
       .arrive_date
-        input.datepicker.arrivedate(placeholder='Arrive Date              (yyyy-mm-dd)', type='text')
+        input.datepicker.arrivedate(placeholder='Arrive Date', type='text')
       .bottom_console
         //- TODO: change so that adult / child isnt part of the select
         select.adults_select

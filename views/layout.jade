@@ -26,12 +26,19 @@ html
         $.ajax({
           url: '/airports.txt',
           success: function(items) {
-            var airports = new Array();
-            $.each(JSON.parse(items), function() {
-              airports.push(this.name);
-            });
+            var jItems = $.parseJSON(items);
             $( ".airportComplete" ).autocomplete({
-              source: airports
+              source: function(request, response) {
+                var searchTerm = request.term.toLowerCase();
+                var matches = [];
+                $.each(jItems, function() {
+                  if(this.name.toLowerCase().indexOf(searchTerm) != -1 ||
+                    this.location.toLowerCase().indexOf(searchTerm) != -1 ||
+                    this.code.toLowerCase().indexOf(searchTerm) == 0) 
+                    matches.push(this.name + ' (' + this.code + ')');
+                });
+                response(matches);
+              }
             });
           }
         });
