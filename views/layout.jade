@@ -7,7 +7,6 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/reset.css')
     link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600', rel='stylesheet', type='text/css')
-    link(rel='stylesheet', href='/stylesheets/style.css')    
 
     link(rel='”icon”', href='”/public/favicon.ico”', type='”image/x-icon”')
     link(rel='”shortcut', href='”/public/favicon.ico”', type='”image/x-icon”')
@@ -22,9 +21,6 @@ html
       $(function() {
         $( ".datepicker" ).datepicker({ dateFormat: "yy-mm-dd", minDate: 0});
       });
-
-    script(src='/javascripts/typeahead.js')
-    script(src='/javascripts/typeahead.min.js')
     script
       $(function() {
         $.ajax({
@@ -37,14 +33,10 @@ html
             $( ".airportComplete" ).autocomplete({
               source: airports
             });
-            //- $( ".airportComplete" ).typeahead({
-            //-   name: 'airports',                                                          
-            //-   prefetch: '/airports.txt',                                         
-            //-   limit: 10   
-            //- });
           }
         });
       });
+    link(rel='stylesheet', href='/stylesheets/style.css')    
 
   body
     #header

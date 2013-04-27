@@ -521,3 +521,15 @@ a.big_btn:hover {
 .result_cost {
 	font-weight: bold;
 }
+
+.center {
+	text-align:center;
+}
+
+.hidden {
+	display:none;
+}
+
+td {
+	border-right: 1px solid #ccc;
+}

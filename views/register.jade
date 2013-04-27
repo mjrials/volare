@@ -7,7 +7,7 @@ block content
       | Already a Member? 
       a(href='/login') Click here 
       | to sign in.
-    form
+    form#registerform
       input.firstname_register(placeholder='First Name', type='text')
       input.lastname_register(placeholder='Last Name', type='text')
       input.username_register(placeholder='Username', type='text')
@@ -15,9 +15,15 @@ block content
       input.cpassword_register(placeholder='Confirm Password', type='password')
       select.ffprogram_select
         option Frequent Flyer Program
-        option United Mileage Plus
-        option Delta SkyMiles
         option American AAdvantage
+        option Delta SkyMiles
+        option Frontier EarlyReturns
+        option HawaiianMiles
+        option JetBlue TrueBlue
+        option Southwest Rapid Rewards
+        option United Mileage Plus
+        option US Dividend Miles
+        option Virgin America eleVAte
       input.flierid_register(placeholder='Flier ID..', type='text')
       input(type='submit', value='Register Now')
 

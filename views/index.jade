@@ -9,16 +9,14 @@ block content
           li#roundtrip.active
             a.blank_link(onclick="javascript:roundTrip()") Round Trip
           li#oneway
-            a.blank_link(onclick="javascript:oneWay()") One-way
-          //- li#connecting
-          //-   a.blank_link(href='#') Connecting
+            a.blank_link(onclick="javascript:oneWay()") One Way
       //- select.class_select
       //-   option Select Cabin/Class
       //-   option Coach
       //-   option Business
       //-   option First Class
       .class_select
-        ul#class_select.nav.nav-pills
+        ul.nav.nav-pills
           li#coach.active
             a.blank_link(onclick="javascript:coach()") Economy
           li#business
@@ -50,9 +48,4 @@ block content
           option(value='1') 1 Child
           option(value='2') 2 Children
           option(value='3') 3 Children
-        //- select.seniors_select
-        //-   option(value='0') 0 Seniors
-        //-   option(value='1') 1 Senior
-        //-   option(value='2') 2 Seniors
-        //-   option(value='3') 3 Seniors
         a.big_btn(onclick="javascript:startSearch(event)") Find Me a Flight
