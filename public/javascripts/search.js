@@ -35,15 +35,17 @@ function camelCase(input) {
 }
 
 displayResults = function(data){
-    // console.log(data);
+    console.log(data);
     // var userAirline = "United Airlines";
 
-    $("#search_flights").fadeOut("normal", function() { 
-        var html = [];
-        html.push('<h2 class="sub_title">Top Results</h2>')
+    var flights = data.response.itineraries;
+
+    var html = [];
+    html.push('<h2 class="sub_title">Top Results</h2>')
+
+    if(flights.length >= 10) {
         html.push('<table width="100%" border="0" cellspacing="0" cellpadding="3" class="table table-striped table-hover"><thead><tr><th>Flight Info</th><th>Route</th><th class="center">Flight Times</th><th>Price</th><th>Redeemable<br />Miles</th><th>Elite Qualifying<br />Miles</th><th>Net Cost</th></tr></thead><tbody>');
 
-        var flights = data.response.itineraries;
         for (var i = 0; i < 10; i++) {
             var airline         = (flights[i].carrier)[0].name;
             var code            = flights[i].outboundInfo.flightNumbers.join(' / ');
@@ -89,29 +91,34 @@ displayResults = function(data){
                     '</td><td>' + '<div><p>$' + cost + '</p><p class="deduction">' + rewardDeduction + '</p></div>' +
                     '</td></tr>');
         }
-
         html.push('</tbody></table>');               
-        $("#search_flights").css("height", "626px"); 
-        $("#search_flights").html(html.join(""));
-    });    
-    $("#search_flights").fadeIn("normal");
+    }
+    else {
+        html.push('<br /><br /><br /><h1 class="center blue">No flights found (possible error). Please try search again.</h1>')
+    }
+
+    $("#search_flights").css("height", "626px"); 
+    $("#search_flights").html(html.join(""));
 }
 
 pull = function(data){
-    // console.log(data);
-
-    var pullURL = 'http://www.wego.com/api/flights/pull.html?' +
-                'format=json' +
-                '&apiKey=48a5cb3a2dc46b8aab6f' +
-                '&instanceId=' + data.request.instanceId + 
-                '&rand=1' +
-                '&callback=displayResults';
-    var timeout = window.setTimeout(function() {
-        $.ajax({
-            url: pullURL,
-            dataType: 'jsonp'
-        });
-    }, 3000);
+    if(!data.error) {
+        var pullURL = 'http://www.wego.com/api/flights/pull.html?' +
+                    'format=json' +
+                    '&apiKey=48a5cb3a2dc46b8aab6f' +
+                    '&instanceId=' + data.request.instanceId + 
+                    '&rand=1' +
+                    '&callback=displayResults';
+        var timeout = window.setTimeout(function() {
+            $.ajax({
+                url: pullURL,
+                dataType: 'jsonp'
+            });
+        }, 10000);
+    }
+    else {
+        $("#search_flights").html('<br /><br /><br /><h1 class="center blue">No flights found (possible error). Please try search again.</h1>');
+    }
 }
 
 function startSearch(event)
@@ -163,6 +170,7 @@ function startSearch(event)
                     '&callback=pull'    + 
                     '&apiKey=48a5cb3a2dc46b8aab6f'
     if(validParams) {
+        $("#search_flights").html('<h2 class="sub_title">Top Results</h2><br /><br /><br /><br /><div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div><div id="clear"></div><h1 class="center blue">Thank you for your patience while we find your flights.</h1><br /><h1 class="center blue">Search may take several seconds.</h1><br /><div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div>');
         $.ajax({
             url: instanceURL,
             dataType: 'jsonp'

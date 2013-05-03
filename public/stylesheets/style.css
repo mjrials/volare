@@ -31,6 +31,11 @@ strong{font-weight: bold; }
 #notify span{line-height: 40px; display: inline-block; float: left; font-size: 14px;}
 em.blue{margin-left: 5px; color: #1571be; font-weight: bold}
 
+.blue {
+	color: #1571be; 
+	font-weight: bold
+}
+
 #notify #account_manage{float: right;}
 #account_manage a{color: #003056}
 
@@ -69,7 +74,7 @@ em.blue{margin-left: 5px; color: #1571be; font-weight: bold}
 	font-size: 30px;
 	font-weight: 600;
 	line-height: 34px;
-	padding-top: 120px;
+	padding-top: 130px;
 }
 
 #headline span{color: #e8d762}
@@ -88,7 +93,7 @@ em.blue{margin-left: 5px; color: #1571be; font-weight: bold}
 	display: block; 
 	box-shadow: 0 0 5px rgba(0,0,0,0.5);
 	position: relative; 
-	margin-top: 40px;
+	margin-top: 30px;
 }
 
 .page_modal{
@@ -533,6 +538,10 @@ a.big_btn:hover {
 
 .syntax_error {
 	border: 1px solid red;
+}
+
+.bar {
+	padding-top: 100px;
 }
 
 td {
