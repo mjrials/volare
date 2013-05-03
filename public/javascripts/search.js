@@ -36,17 +36,17 @@ function camelCase(input) {
 
 displayResults = function(data){
     console.log(data);
-    // var userAirline = "United Airlines";
+    var userAirline = $('.rewards').val();  
 
     var flights = data.response.itineraries;
 
     var html = [];
     html.push('<h2 class="sub_title">Top Results</h2>')
 
-    if(flights.length >= 10) {
+    if(flights.length >= 20) {
         html.push('<table width="100%" border="0" cellspacing="0" cellpadding="3" class="table table-striped table-hover"><thead><tr><th>Flight Info</th><th>Route</th><th class="center">Flight Times</th><th>Price</th><th>Redeemable<br />Miles</th><th>Elite Qualifying<br />Miles</th><th>Net Cost</th></tr></thead><tbody>');
 
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 20; i++) {
             var airline         = (flights[i].carrier)[0].name;
             var code            = flights[i].outboundInfo.flightNumbers.join(' / ');
             var tClass          = (flights[i].outboundInfo.flightClasses)[0].name;
@@ -61,7 +61,7 @@ displayResults = function(data){
             var rewardDeduction = "";
             var cost            = price;
 
-            // if(airline == userAirline) {
+            if(airline == userAirline) {
                 var dollarsPerMile;
 
                 if(tClass == 'Economy')     { rMiles = estMiles; }
@@ -80,7 +80,7 @@ displayResults = function(data){
                 rMiles = numberWithCommas(rMiles);
                 qMiles = numberWithCommas(qMiles);
                 rewardDeduction = "- $" + rewardDeduction;
-            // }
+            }
                 
             html.push('<tr><td>' + '<div><p class="result_airline">' + airline + '</p><p>' + code + ' - ' + tClass + '</p></div>' + 
                     '</td><td>' + route + 
@@ -97,7 +97,7 @@ displayResults = function(data){
         html.push('<br /><br /><br /><h1 class="center blue">No flights found (possible error). Please try search again.</h1>')
     }
 
-    $("#search_flights").css("height", "626px"); 
+    $("#search_flights").css("height", "1210px"); 
     $("#search_flights").html(html.join(""));
 }
 

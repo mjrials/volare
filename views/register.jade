@@ -15,15 +15,15 @@ block content
       input.cpassword_register(placeholder='Confirm Password', type='password')
       select.ffprogram_select
         option Frequent Flyer Program
-        option American AAdvantage
-        option Delta SkyMiles
-        option Frontier EarlyReturns
-        option HawaiianMiles
-        option JetBlue TrueBlue
-        option Southwest Rapid Rewards
-        option United Mileage Plus
-        option US Dividend Miles
-        option Virgin America eleVAte
+        option(value="American Airlines") American AAdvantage
+        option(value="Delta Air Lines") Delta SkyMiles
+        option(value="Frontier Airlines") Frontier EarlyReturns
+        option(value="Hawaiian Airlines") HawaiianMiles
+        option(value="JetBlue Airways") JetBlue TrueBlue
+        option(value="Southwest Airlines") Southwest Rapid Rewards
+        option(value="United Airlines") United Mileage Plus
+        option(value="US Airways") US Dividend Miles
+        option(value="Virgin America") Virgin America eleVAte
       input.flierid_register(placeholder='Flier ID..', type='text')
       input(type='submit', value='Register Now')
 

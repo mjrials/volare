@@ -24,13 +24,13 @@ block content
         //- input.airport(type='checkbox')
         //- //- p.nb Nearby Airports
       .arrive_to
-        input.arriveto.airportComplete(placeholder='To                ex. Los Angeles (LAX)', type='text')
+        input.arriveto.airportComplete(placeholder='To                 ex. Los Angeles (LAX)', type='text')
         //- input.airport(type='checkbox')  
         //- p.nb Nearby Airports
       .depart_date
-        input.datepicker.departdate(placeholder='Depart Date              (yyyy-mm-dd)', type='text')
+        input.datepicker.departdate(placeholder='Depart Date             (yyyy-mm-dd)', type='text')
       .arrive_date
-        input.datepicker.arrivedate(placeholder='Arrive Date             (yyyy-mm-dd)', type='text')
+        input.datepicker.arrivedate(placeholder='Arrive Date              (yyyy-mm-dd)', type='text')
       .bottom_console
         //- TODO: change so that adult / child isnt part of the select
         select.adults_select
@@ -43,4 +43,15 @@ block content
           option(value='1') 1 Child
           option(value='2') 2 Children
           option(value='3') 3 Children
+        select.rewards
+          option(value="") Reward Program
+          option(value="American Airlines") American AAdvantage
+          option(value="Delta Air Lines") Delta SkyMiles
+          option(value="Frontier Airlines") Frontier EarlyReturns
+          option(value="Hawaiian Airlines") HawaiianMiles
+          option(value="JetBlue Airways") JetBlue TrueBlue
+          option(value="Southwest Airlines") Southwest Rapid Rewards
+          option(value="United Airlines") United Mileage Plus
+          option(value="US Airways") US Dividend Miles
+          option(value="Virgin America") Virgin America eleVAte
         a.big_btn(onclick="javascript:startSearch(event)") Find Me a Flight
