@@ -10,6 +10,8 @@
 //      add pics for airlines?
 //      sort search results
 
+var userRewards;
+
 function getNumTickets(string) {
     return string.replace( /^\D+/g, '');
 }
@@ -61,7 +63,7 @@ displayResults = function(data){
             var rewardDeduction = "";
             var cost            = price;
 
-            if(airline == userAirline) {
+            if(airline == userRewards) {
                 var dollarsPerMile;
 
                 if(tClass == 'Economy')     { rMiles = estMiles; }
@@ -135,6 +137,8 @@ function startSearch(event)
     var arrive      = $('.arrivedate').val();           //dates must be yyyy-mm-dd
     var adults      = $('.adults_select').val();        
     var children    = $('.children_select').val();
+
+    userRewards = $('.rewards').val();
 
     var arriveString = '';
     if(type == "roundTrip") {

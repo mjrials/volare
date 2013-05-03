@@ -114,14 +114,15 @@ em.blue{margin-left: 5px; color: #1571be; font-weight: bold}
 }
 
 .bottom_console select{
-	width: 150px;
+	width: 190px;
+	height: 45px;
 	display: block; 
 	float: left;
 	background: #fefefe;
 	box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
 	line-height: 45px;
-	margin: 30px 0px 0 40px;
-	font-size: 22px;
+	margin: 30px 0px 0 20px;
+	font-size: 26px;
 	padding: 10px;
 	color: #999;
 	border-color: #ececec;
@@ -542,6 +543,10 @@ a.big_btn:hover {
 
 .bar {
 	padding-top: 100px;
+}
+
+.big_select {
+	width: 300px;
 }
 
 td {
