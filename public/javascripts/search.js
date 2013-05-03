@@ -170,7 +170,7 @@ function startSearch(event)
                     '&callback=pull'    + 
                     '&apiKey=48a5cb3a2dc46b8aab6f'
     if(validParams) {
-        $("#search_flights").html('<h2 class="sub_title">Top Results</h2><br /><br /><br /><br /><div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div><div id="clear"></div><h1 class="center blue">Thank you for your patience while we find your flights.</h1><br /><h1 class="center blue">Search may take several seconds.</h1><br /><div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div>');
+        $("#search_flights").html('<h2 class="sub_title">Top Results</h2><br /><br /><br /><br /><h1 class="center blue">Thank you for your patience while we find your flights.</h1><br /><h1 class="center blue">Search may take several seconds.</h1><br /><div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div>');
         $.ajax({
             url: instanceURL,
             dataType: 'jsonp'
