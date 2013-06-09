@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Volare</title>
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+	<%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
+	<%= stylesheet_link_tag    "reset", :media => "all" %>
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600">
+
+	<link rel=”icon” href=”/public/favicon.ico” type=”image/x-icon”>
+	<link rel=”shortcut icon” href=”/public/favicon.ico” type=”image/x-icon”>
+
+	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag "search" %>
+	<%= javascript_include_tag "helpers" %>
+
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+	<script type="text/javascript">
+	$(function() {
+		$( ".datepicker" ).datepicker({ dateFormat: "yy-mm-dd", minDate: 1});
+	});
+	</script>
+	<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url: '/airports.txt',
+			success: function(items) {
+				var jItems = $.parseJSON(items);
+				$( ".airportComplete" ).autocomplete({
+					source: function(request, response) {
+						var searchTerm = request.term.toLowerCase();
+						var matches = [];
+						$.each(jItems, function() {
+							if(this.name.toLowerCase().indexOf(searchTerm) != -1 ||
+								this.location.toLowerCase().indexOf(searchTerm) != -1 ||
+								this.code.toLowerCase().indexOf(searchTerm) == 0) 
+								matches.push(this.name + ' (' + this.code + ')');
+						});
+						response(matches);
+					}
+				});
+			}
+		});
+	});
+	</script>
+
+	<%= stylesheet_link_tag    "style", :media => "all" %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="header">
+		<div class="inner">
+			<div id="notify">
+				<%= image_tag 'headicons.jpg', :alt => "savings icons" %>
+				<span>
+					<strong> Achieve </strong>
+					the 
+					<strong> highest </strong>
+					frequent flier status possible.
+					<em class="blue"> Say hello to travel rewards! </em>
+				</span>
+				<div id="account_manage">
+					<% if session[:userid] then %>
+						Hi, <%= User.find(session[:userid]).first_name %>
+						| 
+						<%= link_to 'My Account', :controller => "users", :action => "index", :id => session[:userid] %>
+						|
+						<%= link_to 'Logout', :controller => "users", :action => "logout" %>
+					<% else %>
+						<%= link_to 'Sign In', :controller => "users", :action => "login"%>
+					<% end %>
+					
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div id="logo">
+				<a href='/'>
+					<%= image_tag 'logo.png', :alt => "Volare" %>
+				</a>
+			</div>
+			<div id="navbar">
+				<a class="navbtn" href='/search/index'> Search Flights </a>
+				<a class="navbtn" href='/users/new'> Register </a>
+				<a class="navbtn" href='/static/about'> About </a>
+				<a class="navbtn" href='/static/contact'> Contact </a>
+			</div>
+		</div>
+	</div>
+	<div class="inner">
+		<h1 id="headline">
+			Start 
+			<span> earning </span>
+			the most elite qualifying and 
+			<span> rewards </span> 
+			mileage possible while booking tickets for future travels.
+		</h1>
+		<%= yield %>
+	</div>
+	<div id="footer">
+		<div class="inner">
+			<span class="copy">
+				© 2013 Volare Inc.
+				<em> | </em>
+				<a href='/static/privacy'> Privacy </a>
+				<em> | </em>
+				<a href='/static/terms'> Terms of Service </a>
+			</span>
+		</div>
+	</div>
+</body>
+</html>

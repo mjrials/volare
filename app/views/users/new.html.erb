@@ -1,0 +1,16 @@
+<% @title = "Register"%>
+<div class="loginbox registerbox">
+	<h1>Register</h1>
+	<h6>Already a member? <a href="/users/login">Click here</a> to sign in.</h6>
+	<% if flash[:notice] then %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+	<%= form_for(@user, :url => {:action => :create}) do |form| %>
+		<%= form.text_field(:first_name, :class => "firstname_register", :placeholder => "First Name") %>
+		<%= form.text_field(:last_name, :class => "lastname_register", :placeholder => "Last Name") %>
+	  	<%= form.text_field(:login, :class => "username_register", :placeholder => "Username") %>
+	  	<%= form.password_field(:password, :class => "password_register", :placeholder => "Password") %>
+	  	<%= form.password_field(:password_copy, :class => "password_login", :placeholder => "Confirm Password") %>
+	  	<%= form.submit "Register Now" %>
+	<% end %>
+</div>

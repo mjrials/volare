@@ -1,0 +1,71 @@
+<div id="search_flights">
+  <h2 class="sub_title"> Start Here. </h2>
+  <form action='#' method='post'>
+    <div class="triptype">
+      <ul class="nav nav-pills">
+        <li id="roundtrip" class="active">
+          <a class="blank_link" onclick="javascript:roundTrip()">Round Trip</a>
+        </li>
+        <li id="oneway">
+          <a class="blank_link" onclick="javascript:oneWay()">One Way</a>
+        </li>
+      </ul>
+    </div>
+    <div class="class_select">
+      <ul class="nav nav-pills">
+        <li id="coach" class="active">
+          <a class="blank_link" onclick="javascript:coach()">Economy</a>
+        </li>
+        <li id="business">
+          <a class="blank_link" onclick="javascript:business()">Business</a>
+        </li>
+        <li id="firstclass">
+          <a class="blank_link" onclick="javascript:firstclass()">First Class</a>
+        </li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="depart_from">
+      <input class="departfrom airportComplete" placeholder='From           ex. San Francisco (SFO)' type='text' />
+      <!-- input.airport(type='checkbox')
+      p.nb Nearby Airports -->
+    </div>
+    <div class="arrive_to">
+      <input class="arriveto airportComplete" placeholder='To                 ex. Los Angeles (LAX)' type='text' />
+    </div>
+    <div class="depart_date">
+      <input class="datepicker departdate" placeholder='Depart Date             (yyyy-mm-dd)' type='text' />
+    </div>
+    <div class="arrive_date">
+      <input class="datepicker arrivedate" placeholder='Return Date             (yyyy-mm-dd)' type='text' />
+    </div>
+    <div class="bottom_console">
+      <!-- TODO: change so that adult / child isnt part of the select -->
+      <select class="adults_select">
+        <option value='0'> 0 Adults </option>
+        <option value='1' selected> 1 Adult </option> 
+        <option value='2'> 2 Adults </option>
+        <option value='3'> 3 Adults </option>
+      </select>
+      <select class="children_select">
+        <option value='0'> 0 Children </option>
+        <option value='1'> 1 Child </option>
+        <option value='2'> 2 Children </option>
+        <option value='3'> 3 Children </option>
+      </select>
+      <select class="rewards">
+        <option value=""> REWARDS </option>
+        <option value="American Airlines"> American AAdvantage </option>
+        <option value="Delta Air Lines"> Delta SkyMiles </option>
+        <option value="Frontier Airlines"> Frontier EarlyReturns </option>
+        <option value="Hawaiian Airlines"> HawaiianMiles </option>
+        <option value="JetBlue Airways"> JetBlue TrueBlue </option>
+        <option value="Southwest Airlines"> Southwest Rapid Rewards </option>
+        <option value="United Airlines"> United Mileage Plus </option>
+        <option value="US Airways"> US Dividend Miles </option>
+        <option value="Virgin America"> Virgin America </option> 
+      </select>
+      <a class="big_btn" onclick="javascript:startSearch(event)"> Find Me a Flight </a>
+    </div>
+  </form>
+</div>

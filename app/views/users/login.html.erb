@@ -1,0 +1,13 @@
+<% @title = "Log In to Savings"%>
+<div class="loginbox">
+	<h1>Log In</h1>
+	<h6>Need an account? <a href="/users/new">Click here</a> to sign up.</h6>
+	<% if flash[:notice] then %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+	<%= form_for(@user, :url => {:action => :post_login}) do |form| %>
+	  <%= form.text_field(:login, :class => "username_login", :placeholder => "Username") %>
+	  <%= form.password_field(:password, :class => "password_login", :placeholder => "Password") %>
+	  <%= form.submit "Login" %>
+	<% end %>
+</div>
