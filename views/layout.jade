@@ -1,0 +1,93 @@
+doctype 5
+html
+  
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/reset.css')
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600', rel='stylesheet', type='text/css')
+
+    link(rel='”icon”', href='”/public/favicon.ico”', type='”image/x-icon”')
+    link(rel='”shortcut', href='”/public/favicon.ico”', type='”image/x-icon”')
+
+    script(src='/javascripts/search.js')  
+    script(src='/javascripts/helpers.js')
+
+    link(rel='stylesheet', href='http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css')
+    script(src='http://code.jquery.com/jquery-1.9.1.js')
+    script(src='http://code.jquery.com/ui/1.10.2/jquery-ui.js')
+    script
+      $(function() {
+        $( ".datepicker" ).datepicker({ dateFormat: "yy-mm-dd", minDate: 1});
+      });
+    script
+      $(function() {
+        $.ajax({
+          url: '/airports.txt',
+          success: function(items) {
+            var jItems = $.parseJSON(items);
+            $( ".airportComplete" ).autocomplete({
+              source: function(request, response) {
+                var searchTerm = request.term.toLowerCase();
+                var matches = [];
+                $.each(jItems, function() {
+                  if(this.name.toLowerCase().indexOf(searchTerm) != -1 ||
+                    this.location.toLowerCase().indexOf(searchTerm) != -1 ||
+                    this.code.toLowerCase().indexOf(searchTerm) == 0) 
+                    matches.push(this.name + ' (' + this.code + ')');
+                });
+                response(matches);
+              }
+            });
+          }
+        });
+      });
+    link(rel='stylesheet', href='/stylesheets/style.css')    
+
+  body
+    #header
+      .inner
+        #notify
+          img(src='/images/headicons.jpg', alt='savings icons')
+          span
+            strong Achieve the highest 
+            | frequent flier status possible. 
+            em.blue Say hello to travel rewards! 
+          #account_manage
+            a(href='/login') Sign In
+            |  | 
+            a(href='/register') My Account
+        .clear
+        #logo
+          a(href='/')
+            img(src='/images/logo.png', alt='Volare')
+        #navbar
+          a.navbtn(href='/') Search Flights
+          a.navbtn(href='/register') Register
+          a.navbtn(href='/about') About
+          a.navbtn(href='/contact') Contact
+
+    .inner
+      h1#headline
+        | Start 
+        span earning 
+        | the most elite qualifying and 
+        span rewards 
+        | mileage possible while booking tickets for future travels.
+
+      block content
+
+    #footer
+      .inner
+        span.copy
+          | © 2013 Volare Inc.
+          em |
+          a(href='/privacy') Privacy
+          em |
+          a(href='/terms') Terms of Service
+      //- script
+      //-   $( function(){
+      //-     $('#search_flights').hide();
+      //-     $('#search_flights').fadeIn(1200);
+      //-   });

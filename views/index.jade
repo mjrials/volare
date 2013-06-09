@@ -1,0 +1,57 @@
+extends layout
+
+block content
+  #search_flights
+    h2.sub_title Start Here.
+    form(action='#', method='post')
+      .triptype
+        ul.nav.nav-pills
+          li#roundtrip.active
+            a.blank_link(onclick="javascript:roundTrip()") Round Trip
+          li#oneway
+            a.blank_link(onclick="javascript:oneWay()") One Way
+      .class_select
+        ul.nav.nav-pills
+          li#coach.active
+            a.blank_link(onclick="javascript:coach()") Economy
+          li#business
+            a.blank_link(onclick="javascript:business()") Business
+          li#firstclass
+            a.blank_link(onclick="javascript:firstclass()") First Class
+      .clear
+      .depart_from
+        input.departfrom.airportComplete(placeholder='From           ex. San Francisco (SFO)', type='text')
+        //- input.airport(type='checkbox')
+        //- //- p.nb Nearby Airports
+      .arrive_to
+        input.arriveto.airportComplete(placeholder='To                 ex. Los Angeles (LAX)', type='text')
+        //- input.airport(type='checkbox')  
+        //- p.nb Nearby Airports
+      .depart_date
+        input.datepicker.departdate(placeholder='Depart Date             (yyyy-mm-dd)', type='text')
+      .arrive_date
+        input.datepicker.arrivedate(placeholder='Arrive Date              (yyyy-mm-dd)', type='text')
+      .bottom_console
+        //- TODO: change so that adult / child isnt part of the select
+        select.adults_select
+          option(value='0') 0 Adults
+          option(value='1', selected) 1 Adult  
+          option(value='2') 2 Adults
+          option(value='3') 3 Adults
+        select.children_select
+          option(value='0') 0 Children
+          option(value='1') 1 Child
+          option(value='2') 2 Children
+          option(value='3') 3 Children
+        select.rewards
+          option(value="") REWARDS
+          option(value="American Airlines") American AAdvantage
+          option(value="Delta Air Lines") Delta SkyMiles
+          option(value="Frontier Airlines") Frontier EarlyReturns
+          option(value="Hawaiian Airlines") HawaiianMiles
+          option(value="JetBlue Airways") JetBlue TrueBlue
+          option(value="Southwest Airlines") Southwest Rapid Rewards
+          option(value="United Airlines") United Mileage Plus
+          option(value="US Airways") US Dividend Miles
+          option(value="Virgin America") Virgin America eleVAte
+        a.big_btn(onclick="javascript:startSearch(event)") Find Me a Flight

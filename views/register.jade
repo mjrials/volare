@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  .loginbox.registerbox
+    h1 Register
+    h6
+      | Already a Member? 
+      a(href='/login') Click here 
+      | to sign in.
+    form#registerform
+      input.firstname_register(placeholder='First Name', type='text')
+      input.lastname_register(placeholder='Last Name', type='text')
+      input.username_register(placeholder='Username', type='text')
+      input.password_register(placeholder='Password', type='password')
+      input.cpassword_register(placeholder='Confirm Password', type='password')
+      select.ffprogram_select
+        option Frequent Flyer Program
+        option(value="American Airlines") American AAdvantage
+        option(value="Delta Air Lines") Delta SkyMiles
+        option(value="Frontier Airlines") Frontier EarlyReturns
+        option(value="Hawaiian Airlines") HawaiianMiles
+        option(value="JetBlue Airways") JetBlue TrueBlue
+        option(value="Southwest Airlines") Southwest Rapid Rewards
+        option(value="United Airlines") United Mileage Plus
+        option(value="US Airways") US Dividend Miles
+        option(value="Virgin America") Virgin America eleVAte
+      input.flierid_register(placeholder='Flier ID..', type='text')
+      input(type='submit', value='Register Now')
+
+    .clear
