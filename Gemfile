@@ -13,5 +13,4 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
 gem 'rails_12factor', group: :production
