@@ -1,9 +1,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: myapp_development
+  database: myapp
   pool: 5
-  username: myapp
+  username: mattrials
   password:
 test:
   adapter: postgresql
